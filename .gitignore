@@ -23,6 +23,8 @@
 hs_err_pid*
 
 target
+.idea
+*.iml
 
 # Mac OS
 .DS_Store
