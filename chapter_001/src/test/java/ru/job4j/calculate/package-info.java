@@ -1,5 +1,5 @@
 /**
- * Package for testing calculate.
+ * Package for testing calculator.
  *
  * @author Maksym Mateiuk(maxymmateuk@gmail.com)
  * @version $Id$
