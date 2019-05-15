@@ -12,8 +12,7 @@ import static org.junit.Assert.*;
  * @version $Id$
  * @since 0.1
  */
-public class TriangleTest
-{
+public class TriangleTest {
 
     @Test
     public void whenAreaSetThreePointsThenTriangleArea() {
