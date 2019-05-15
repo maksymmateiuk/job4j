@@ -12,8 +12,7 @@ import static org.junit.Assert.*;
  * @version $Id$
  * @since 0.1
  */
-public class CounterTest
-{
+public class CounterTest {
 
     @Test
     public void whenSumEvenNumbersFromOneToTenThenThirty() {
