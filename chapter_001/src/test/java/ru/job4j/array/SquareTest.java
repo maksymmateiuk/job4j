@@ -2,11 +2,11 @@ package ru.job4j.array;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 /**
- * Factorial tests.
+ * Square tests.
  *
  * @author Maksym Mateiuk (maxymmateuk@gmail.com)
  * @version $Id$
