@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 /**
- * Find loop tests.
+ * Check tests.
  *
  * @author Maksym Mateiuk (maxymmateuk@gmail.com)
  * @version $Id$
