@@ -10,6 +10,7 @@ import java.util.Arrays;
  * @since 0.1
  */
 public class ArrayDuplicate {
+
    public String[] remove(String[] array) {
       int end = array.length;
       for (int i = 0; i < end; i++) {

@@ -8,6 +8,7 @@ package ru.job4j.array;
  * @since 0.1
  */
 public class MatrixCheck {
+
     public boolean mono(boolean[][] data) {
         boolean result = true;
         for (int i = 0; i < data.length; i++) {
