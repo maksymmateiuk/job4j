@@ -24,4 +24,26 @@ public class MergeSortArraysTest {
         int[] result = arrays.merge(left, right);
         assertThat(result, is(expected));
     }
+
+    @Test
+    public void whenFirstArrayBiggerThatSecondThenResultIsThirdSortedArray() {
+        MergeSortArrays arrays = new MergeSortArrays();
+        int[] expected = {1, 2, 3, 3, 4, 4};
+        int[] left = {1, 2, 3, 4};
+        int[] right = {3, 4};
+
+        int[] result = arrays.merge(left, right);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenFirstArrayIsEmptyThenResultIsThirdSortedArray() {
+        MergeSortArrays arrays = new MergeSortArrays();
+        int[] expected = {3, 4};
+        int[] left = {};
+        int[] right = {3, 4};
+
+        int[] result = arrays.merge(left, right);
+        assertThat(result, is(expected));
+    }
 }
