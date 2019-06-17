@@ -5,8 +5,7 @@ package ru.job4j.array;
  *
  * @author Maksym Mateiuk (maxymmateuk@gmail.com)
  */
-public class MergeSortArrays
-{
+public class MergeSortArrays {
    public int[] merge(int[] left, int[] right) {
 
        int[] result = new int[left.length + right.length];
