@@ -7,17 +7,29 @@ package ru.job4j.condition;
  */
 public class Point {
 
+    private int x;
+    private int y;
+
+    /**
+     * Конструктор, который принимает начальное состояние объекта "точка"
+     * @param first координата x
+     * @param second координата y
+     */
+    public Point(int first, int second) {
+        this.x = first;
+        this.y = second;
+    }
+
     /**
      * Calculate distance.
-     * @param x1 integer
-     * @param y1 integer
-     * @param x2 integer
-     * @param y2 integer
+     * @param that Point
      * @return distance
      */
-    public double distance(int x1, int y1, int x2, int y2) {
-        double first = Math.pow((x2 - x1), 2);
-        double second = Math.pow((y2 - y1), 2);
-        return Math.sqrt(first + second);
+    public double distance(Point that) {
+        return Math.sqrt(Math.pow(this.x - that.x, 2) + Math.pow(this.y - that.y, 2));
+    }
+
+    public void info() {
+        System.out.println(String.format("Point[%s, %s]", this.x, this.y));
     }
 }
