@@ -6,6 +6,17 @@ package ru.job4j.condition;
  * @author Maksym Mateiuk (maxymmateuk@gmail.com)
  */
 public class Triangle {
+
+    private Point first;
+    private Point second;
+    private Point third;
+
+    public Triangle(Point ap, Point bp, Point cp) {
+        this.first = ap;
+        this.second = bp;
+        this.third = cp;
+    }
+
     /**
      * Метод вычисления периметра по длинам сторон.
      *
@@ -33,11 +44,11 @@ public class Triangle {
      *
      * @return Вернуть площадь, если треугольник существует или -1.
      */
-    public double area(Point firstPoint, Point secondPoint, Point thirdPoint) {
+    public double area() {
         double rsl = -1;
-        double a = firstPoint.distance(secondPoint);
-        double b = secondPoint.distance(thirdPoint);
-        double c = firstPoint.distance(thirdPoint);
+        double a = this.first.distance(second);
+        double b = this.second.distance(third);
+        double c = this.first.distance(third);
         double p = period(a, b, c);
         if (this.exist(a, b, c)) {
             // написать формулу для расчета площади треугольника.
