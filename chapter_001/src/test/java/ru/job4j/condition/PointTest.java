@@ -22,6 +22,14 @@ public class PointTest {
     }
 
     @Test
+    public void whenCheckItself3d() {
+        Point first = new Point(0, 0, 0);
+        Point second = new Point(0, 0, 10);
+        double result = first.distance3d(second);
+        assertThat(result, is(10D));
+    }
+
+    @Test
     public void whenShowInfo() {
         Point first = new Point(1, 1);
         first.info();
