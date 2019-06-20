@@ -34,4 +34,25 @@ public class MaxTest {
         int result = max.max(1, 1);
         assertThat(result, is(1));
     }
+
+    @Test
+    public void when1And1And2Then2() {
+        Max max = new Max();
+        int result = max.max(1, 1, 2);
+        assertThat(result, is(2));
+    }
+
+    @Test
+    public void when2And1And1Then2() {
+        Max max = new Max();
+        int result = max.max(2, 1, 1);
+        assertThat(result, is(2));
+    }
+
+    @Test
+    public void when1And2And1Then2() {
+        Max max = new Max();
+        int result = max.max(1, 2, 1);
+        assertThat(result, is(2));
+    }
 }
