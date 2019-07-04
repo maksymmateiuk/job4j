@@ -127,7 +127,7 @@ public class TrackerTest {
         tracker.add(firstItem);
         tracker.add(secondItem);
         tracker.add(thirdItem);
-        Item[] expected = new Item[100];
+        Item[] expected = new Item[1];
         expected[0] = secondItem;
         Item[] result = tracker.findByName(secondItem.getName());
         assertThat(result, is(expected));
@@ -142,7 +142,7 @@ public class TrackerTest {
         tracker.add(firstItem);
         tracker.add(secondItem);
         tracker.add(thirdItem);
-        Item[] expected = new Item[100];
+        Item[] expected = new Item[3];
         expected[0] = firstItem;
         expected[1] = secondItem;
         expected[2] = thirdItem;
