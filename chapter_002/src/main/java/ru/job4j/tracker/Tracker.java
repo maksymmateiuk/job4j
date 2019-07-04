@@ -22,32 +22,27 @@ public class Tracker {
 
     public boolean replace(String id, Item item) {
         boolean result = false;
-        Item itemResult = findById(id);
-        if (itemResult != null) {
             for (int i = 0; i < items.length; i++) {
-                if (items[i].getId().equals(itemResult.getId())) {
+                if (items[i].getId().equals(id)) {
                     items[i] = item;
                     result = true;
                     break;
                 }
             }
-        }
         return result;
     }
 
     public boolean delete(String id) {
         boolean result = false;
-        if (findById(id) != null) {
             for (int i = 0; i < items.length; i++) {
-                if (items[i].getId().equals(id)) {
+                if (items[i] != null && items[i].getId().equals(id)) {
                     copyArray(++i);
                     result = true;
+                    items[position] = null;
+                    position--;
                     break;
                 }
             }
-            items[position] = null;
-            position--;
-        }
 
         return result;
     }
