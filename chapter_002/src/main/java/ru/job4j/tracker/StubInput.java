@@ -17,8 +17,7 @@ public class StubInput implements Input {
     }
 
     @Override
-    public String ask(String question)
-    {
+    public String ask(String question) {
         System.out.println(question);
         return answers[position++];
     }

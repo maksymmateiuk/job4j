@@ -31,7 +31,7 @@ public class StartUI {
 
     public void init() {
         boolean exit = false;
-        while(!exit) {
+        while (!exit) {
             this.showMenu();
             String answer = this.input.ask("Select:");
             if (ADD.equals(answer)) {
@@ -77,13 +77,21 @@ public class StartUI {
         String name = this.input.ask("Please, enter new item's name :");
         String desc = this.input.ask("Please, enter new item's description :");
         Item item = new Item(name, desc, System.currentTimeMillis());
-        this.tracker.replace(id, item);
+        if (this.tracker.replace(id, item)) {
+            System.out.println("------ Items saved ------");
+        } else {
+            System.out.println("------ Item not found ------");
+        }
     }
 
     private void deleteItem() {
         System.out.println("------ Deleting item ------");
         String id = this.input.ask("Please, enter item id: ");
-        this.tracker.delete(id);
+        if (this.tracker.delete(id)) {
+            System.out.println("------ Item deleted ------");
+        } else {
+            System.out.println("------ Item not found ------");
+        }
     }
 
     private void findById() {
