@@ -1,11 +1,14 @@
 package ru.job4j.tracker;
 
-import org.junit.Test;
-
-import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Start UI tests.
@@ -15,6 +18,21 @@ import static org.junit.Assert.*;
  * @since 0.1
  */
 public class StartUITest {
+
+    private final PrintStream stdout = System.out;
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+    @Before
+    public void loadOutput() {
+        System.out.println("execute before method");
+        System.setOut(new PrintStream(this.out));
+    }
+
+    @After
+    public void backOutput() {
+        System.setOut(this.stdout);
+        System.out.println("execute after method");
+    }
 
     @Test
     public void whenAddItemThenTrackerHasItem() {
@@ -47,5 +65,48 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         Item[] itemResult = tracker.findByName(item.getName());
         assertThat(itemResult, is(new Item[]{}));
+    }
+
+    @Test
+    public void whenGetAllItemThenShowAllItems() {
+        Item item1 = new Item("test1", "desc1", 1L);
+        Item item2 = new Item("test2", "desc2", 2L);
+        Input input = new StubInput(new String[]{"1", "6"});
+        Tracker tracker = new Tracker();
+        item1 = tracker.add(item1);
+        item2 = tracker.add(item2);
+        new StartUI(input, tracker).init();
+        String menu = "0. Add new Item\n" +
+                "1. Show all items\n" +
+                "2. Edit item\n" +
+                "3. Delete item\n" +
+                "4. Find item by id\n" +
+                "5. Find items by name\n" +
+                "6. Exit Program\n";
+        assertThat(new String(out.toByteArray()),
+            is(new StringBuilder()
+                  .append(menu)
+                  .append("-------------------------------------------------")
+                  .append(System.lineSeparator())
+                  .append("Id: " + item1.getId())
+                  .append(System.lineSeparator())
+                  .append("Name: " + item1.getName())
+                  .append(System.lineSeparator())
+                  .append("Description: " + item1.getDescription())
+                  .append(System.lineSeparator())
+                  .append("-------------------------------------------------")
+                  .append(System.lineSeparator())
+                  .append("-------------------------------------------------")
+                  .append(System.lineSeparator())
+                  .append("Id: " + item2.getId())
+                  .append(System.lineSeparator())
+                  .append("Name: " + item2.getName())
+                  .append(System.lineSeparator())
+                  .append("Description: " + item2.getDescription())
+                  .append(System.lineSeparator())
+                  .append("-------------------------------------------------")
+                  .append(System.lineSeparator())
+                  .append(menu)
+                  .toString()));
     }
 }
