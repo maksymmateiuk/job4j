@@ -31,7 +31,7 @@ public class StartUITest {
 
     @Before
     public void loadOutput() {
-        System.out.println("execute before method");
+        System.setOut(new PrintStream(this.out));
     }
 
     @After
