@@ -21,17 +21,22 @@ public class StartUITest {
 
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final String menu = "0. Add new Item\n" +
+            "1. Show all items\n" +
+            "2. Edit item\n" +
+            "3. Delete item\n" +
+            "4. Find item by id\n" +
+            "5. Find items by name\n" +
+            "6. Exit Program\n";
 
     @Before
     public void loadOutput() {
         System.out.println("execute before method");
-        System.setOut(new PrintStream(this.out));
     }
 
     @After
     public void backOutput() {
         System.setOut(this.stdout);
-        System.out.println("execute after method");
     }
 
     @Test
@@ -76,13 +81,6 @@ public class StartUITest {
         item1 = tracker.add(item1);
         item2 = tracker.add(item2);
         new StartUI(input, tracker).init();
-        String menu = "0. Add new Item\n" +
-                "1. Show all items\n" +
-                "2. Edit item\n" +
-                "3. Delete item\n" +
-                "4. Find item by id\n" +
-                "5. Find items by name\n" +
-                "6. Exit Program\n";
         assertThat(new String(out.toByteArray()),
             is(new StringBuilder()
                   .append(menu)
@@ -109,4 +107,53 @@ public class StartUITest {
                   .append(menu)
                   .toString()));
     }
+
+    @Test
+    public void whenInvokeFindByIdThenThenPrintFoundItem() {
+        Item item = new Item("test1", "desc1", 1L);
+        Tracker tracker = new Tracker();
+        item = tracker.add(item);
+        Input input = new StubInput(new String[]{"4", item.getId(), "6"});
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()),
+                is(new StringBuilder()
+                        .append(menu)
+                        .append("-------------------------------------------------")
+                        .append(System.lineSeparator())
+                        .append("Id: " + item.getId())
+                        .append(System.lineSeparator())
+                        .append("Name: " + item.getName())
+                        .append(System.lineSeparator())
+                        .append("Description: " + item.getDescription())
+                        .append(System.lineSeparator())
+                        .append("-------------------------------------------------")
+                        .append(System.lineSeparator())
+                        .append(menu)
+                        .toString()));
+    }
+
+    @Test
+    public void whenInvokeFindByNameThenThenPrintFoundItem() {
+        Item item = new Item("test1", "desc1", 1L);
+        Tracker tracker = new Tracker();
+        item = tracker.add(item);
+        Input input = new StubInput(new String[]{"5", item.getName(), "6"});
+        new StartUI(input, tracker).init();
+        assertThat(new String(out.toByteArray()),
+                is(new StringBuilder()
+                        .append(menu)
+                        .append("-------------------------------------------------")
+                        .append(System.lineSeparator())
+                        .append("Id: " + item.getId())
+                        .append(System.lineSeparator())
+                        .append("Name: " + item.getName())
+                        .append(System.lineSeparator())
+                        .append("Description: " + item.getDescription())
+                        .append(System.lineSeparator())
+                        .append("-------------------------------------------------")
+                        .append(System.lineSeparator())
+                        .append(menu)
+                        .toString()));
+    }
+
 }
