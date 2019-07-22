@@ -10,7 +10,6 @@ import java.util.List;
  * @version $Id$
  * @since 0.1
  */
-
 public class MenuTracker {
 
     private Input input;
@@ -32,8 +31,13 @@ public class MenuTracker {
         this.actions.add(new ExitProgram());
     }
 
-    public void select(int key) {
+    public int getActionsLength() {
+        return actions.size();
+    }
+
+    public int select(int key) {
         this.actions.get(key).execute(this.input, this.tracker);
+        return key;
     }
 
     public void show() {

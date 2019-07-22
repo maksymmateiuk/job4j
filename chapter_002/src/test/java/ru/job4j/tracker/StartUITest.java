@@ -21,13 +21,13 @@ public class StartUITest {
 
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-    private final String menu = "0. Add the new item.\n" +
-            "1. Show all items.\n" +
-            "2. Edit item.\n" +
-            "3. Delete item.\n" +
-            "4. Find item by id.\n" +
-            "5. Find items by name.\n" +
-            "6. Exit Program.\n";
+    private final String menu = "0. Add the new item.\n"
+            + "1. Show all items.\n"
+            + "2. Edit item.\n"
+            + "3. Delete item.\n"
+            + "4. Find item by id.\n"
+            + "5. Find items by name.\n"
+            + "6. Exit Program.\n";
 
     @Before
     public void loadOutput() {
