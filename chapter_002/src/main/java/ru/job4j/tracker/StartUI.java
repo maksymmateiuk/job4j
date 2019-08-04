@@ -21,6 +21,7 @@ public class StartUI {
 
     private final Input input;
     private final Tracker tracker;
+    private boolean working = true;
 
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
@@ -39,15 +40,18 @@ public class StartUI {
         menuTracker.addAction(new DeleteItem(3, "Delete item."));
         menuTracker.addAction(new FindItemById(4, "Find item by id."));
         menuTracker.addAction(new FindItemsByName(5, "Find items by name."));
-        menuTracker.addAction(new ExitProgram(6, "Exit Program."));
+        menuTracker.addAction(new ExitProgram(6, "Exit Program.", this));
         List<Integer> range = new ArrayList<>();
         for (int i = 0; i < menuTracker.getActionsLength(); i++) {
             range.add(i);
         }
-        int key;
         do {
             menuTracker.show();
-            key = menuTracker.select(input.ask("Select: ", range));
-        } while (key != 6);
+            menuTracker.select(input.ask("Select: ", range));
+        } while (this.working);
+    }
+
+    public void stop() {
+        this.working = false;
     }
 }
