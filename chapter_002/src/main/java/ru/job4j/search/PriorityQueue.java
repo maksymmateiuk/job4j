@@ -12,9 +12,6 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-        if (tasks.size() == 0) {
-            tasks.add(task);
-        } else {
             int index = 0;
             for (Task element : tasks) {
                 if (element.getPriority() > task.getPriority()) {
@@ -23,8 +20,8 @@ public class PriorityQueue {
                 }
                 index++;
             }
+            tasks.add(task);
         }
-    }
 
     public Task take() {
         return tasks.poll();
