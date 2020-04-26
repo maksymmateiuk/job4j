@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.Before;
@@ -70,7 +71,7 @@ public class StartUITest {
         Input input = new StubInput(new String[] {"3", item.getId(), "6"});
         new StartUI(input, tracker).init();
         List<Item> itemResult = tracker.findByName(item.getName());
-        assertThat(itemResult, is(new Item[]{}));
+        assertThat(itemResult, is(new ArrayList<>()));
     }
 
     @Test
