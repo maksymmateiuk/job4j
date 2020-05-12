@@ -1,5 +1,8 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
@@ -105,16 +108,16 @@ public class TrackerTest {
         tracker.add(firstItem);
         tracker.add(secondItem);
         tracker.add(thirdItem);
-        Item[] expected = {firstItem, secondItem, thirdItem};
-        Item[] result = tracker.findAll();
+        List<Item> expected = Arrays.asList(firstItem, secondItem, thirdItem);
+        List<Item> result = tracker.findAll();
         assertThat(result, is(expected));
     }
 
     @Test
     public void whenEmptyTrackerThenFindAllReturnNoItems() {
         Tracker tracker = new Tracker();
-        Item[] expected = {};
-        Item[] result = tracker.findAll();
+        List<Item> expected = new ArrayList<>();
+        List<Item>  result = tracker.findAll();
         assertThat(result, is(expected));
     }
 
@@ -127,9 +130,8 @@ public class TrackerTest {
         tracker.add(firstItem);
         tracker.add(secondItem);
         tracker.add(thirdItem);
-        Item[] expected = new Item[1];
-        expected[0] = secondItem;
-        Item[] result = tracker.findByName(secondItem.getName());
+        List<Item> expected = Arrays.asList(secondItem);
+        List<Item>  result = tracker.findByName(secondItem.getName());
         assertThat(result, is(expected));
     }
 
@@ -142,11 +144,8 @@ public class TrackerTest {
         tracker.add(firstItem);
         tracker.add(secondItem);
         tracker.add(thirdItem);
-        Item[] expected = new Item[3];
-        expected[0] = firstItem;
-        expected[1] = secondItem;
-        expected[2] = thirdItem;
-        Item[] result = tracker.findByName(firstItem.getName());
+        List<Item> expected = Arrays.asList(firstItem, secondItem, thirdItem);
+        List<Item>  result = tracker.findByName(firstItem.getName());
         assertThat(result, is(expected));
     }
 }

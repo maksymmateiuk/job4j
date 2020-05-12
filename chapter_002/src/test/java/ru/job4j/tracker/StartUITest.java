@@ -6,6 +6,8 @@ import static org.junit.Assert.assertThat;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +47,7 @@ public class StartUITest {
         Input input = new StubInput(new String[] {"0", item.getName(), item.getDescription(), "6"});
         Tracker tracker = new Tracker();
         new StartUI(input, tracker).init();
-        Item itemResult = tracker.findByName(item.getName())[0];
+        Item itemResult = tracker.findByName(item.getName()).get(0);
         assertThat(item.getName(), is(itemResult.getName()));
     }
 
@@ -57,7 +59,7 @@ public class StartUITest {
         Item toEditItem = new Item("edited", "edited desc", System.currentTimeMillis());
         Input input = new StubInput(new String[] {"2", item.getId(), toEditItem.getName(), toEditItem.getDescription(), "6"});
         new StartUI(input, tracker).init();
-        Item itemResult = tracker.findByName(toEditItem.getName())[0];
+        Item itemResult = tracker.findByName(toEditItem.getName()).get(0);
         assertThat(item.getId(), is(itemResult.getId()));
     }
 
@@ -68,8 +70,8 @@ public class StartUITest {
         item = tracker.add(item);
         Input input = new StubInput(new String[] {"3", item.getId(), "6"});
         new StartUI(input, tracker).init();
-        Item[] itemResult = tracker.findByName(item.getName());
-        assertThat(itemResult, is(new Item[]{}));
+        List<Item> itemResult = tracker.findByName(item.getName());
+        assertThat(itemResult, is(new ArrayList<>()));
     }
 
     @Test
