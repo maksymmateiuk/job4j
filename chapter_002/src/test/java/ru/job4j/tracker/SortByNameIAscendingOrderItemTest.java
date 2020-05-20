@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 
-public class SortByNameItemTest {
+public class SortByNameIAscendingOrderItemTest {
 
     private static final long TIME = 0L;
 
@@ -19,7 +19,7 @@ public class SortByNameItemTest {
                 new Item("test1", "testDescription1", TIME),
                 new Item("test3", "testDescription3", TIME)
         );
-        Collections.sort(items, new SortByNameItem());
+        Collections.sort(items, new SortByNameIAscendingOrderItem());
         List<Item> expectedListItems = Arrays.asList(
                 new Item("test1", "testDescription1", TIME),
                 new Item("test2", "testDescription2", TIME),
@@ -35,7 +35,7 @@ public class SortByNameItemTest {
                 new Item("test1", "testDescription1", TIME),
                 new Item("test3", "testDescription3", TIME)
         );
-        Collections.sort(items, new SortByNameReverseOrderItem());
+        Collections.sort(items, new SortByNameDescendingOrderItem());
         List<Item> expectedListItems = Arrays.asList(
                 new Item("test3", "testDescription3", TIME),
                 new Item("test2", "testDescription2", TIME),
