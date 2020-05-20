@@ -35,7 +35,7 @@ public class SortByNameItemTest {
                 new Item("test1", "testDescription1", TIME),
                 new Item("test3", "testDescription3", TIME)
         );
-        Collections.sort(items, new SortByNameItem().reversed());
+        Collections.sort(items, new SortByNameReverseOrderItem());
         List<Item> expectedListItems = Arrays.asList(
                 new Item("test3", "testDescription3", TIME),
                 new Item("test2", "testDescription2", TIME),
