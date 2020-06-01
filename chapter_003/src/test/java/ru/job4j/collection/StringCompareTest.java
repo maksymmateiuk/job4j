@@ -25,7 +25,17 @@ public class StringCompareTest {
                 "Ivanov",
                 "Ivanova"
         );
-//        assertThat(rst, lessThan(0));
+        assertThat(rst, lessThan(0));
+    }
+
+    @Test
+    public void whenRightGreaterThanLeftResultShouldBeNegative () {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "Ivanova",
+                "Ivanov"
+        );
+        assertThat(rst, greaterThan(0));
     }
 
     @Test
