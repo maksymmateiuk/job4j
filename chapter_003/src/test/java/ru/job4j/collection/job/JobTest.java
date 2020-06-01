@@ -7,9 +7,6 @@ import static org.junit.Assert.assertThat;
 
 public class JobTest {
 
-    private static final String NAME = "Same name";
-    private static final int PRIORITY = 0;
-
     @Test
     public void whenComparatorAscByName() {
         Comparator<Job> compAscByName = new JobAscByName();
@@ -54,8 +51,8 @@ public class JobTest {
     public void whenComparatorAscByNameAndAscPriority() {
         Comparator<Job> compAscNameAscPriority = new JobAscByName().thenComparing(new JobAscByPriority());
         int result = compAscNameAscPriority.compare(
-                new Job(NAME, 0),
-                new Job(NAME, 1)
+                new Job("Same name", 0),
+                new Job("Same name", 1)
         );
         assertThat(result, is(-1));
     }
@@ -64,8 +61,8 @@ public class JobTest {
     public void whenComparatorDescByNameAndAscPriority() {
         Comparator<Job> compDescNameAscPriority = new JobDescByName().thenComparing(new JobAscByPriority());
         int result = compDescNameAscPriority.compare(
-                new Job(NAME, 0),
-                new Job(NAME, 1)
+                new Job("Same name", 0),
+                new Job("Same name", 1)
         );
         assertThat(result, is(-1));
     }
@@ -75,8 +72,8 @@ public class JobTest {
     public void whenComparatorDescByNameAndDescPriority() {
         Comparator<Job> compDescNameDescPriority = new JobDescByName().thenComparing(new JobDescByPriority());
         int result = compDescNameDescPriority.compare(
-                new Job(NAME, 0),
-                new Job(NAME, 1)
+                new Job("Same name", 0),
+                new Job("Same name", 1)
         );
         assertThat(result, is(1));
     }
@@ -85,8 +82,8 @@ public class JobTest {
     public void whenComparatorAscByNameAndDescPriority() {
         Comparator<Job> compAscNameDescPriority = new JobAscByName().thenComparing(new JobDescByPriority());
         int result = compAscNameDescPriority.compare(
-                new Job(NAME, 0),
-                new Job(NAME, 1)
+                new Job("Same name", 0),
+                new Job("Same name", 1)
         );
         assertThat(result, is(1));
     }
@@ -95,8 +92,8 @@ public class JobTest {
     public void whenComparatorAscByPriorityAndAscName() {
         Comparator<Job> compAscPriorityAscName = new JobAscByPriority().thenComparing(new JobAscByName());
         int result = compAscPriorityAscName.compare(
-                new Job("Impl task", PRIORITY),
-                new Job("Fix bug", PRIORITY)
+                new Job("Impl task", 0),
+                new Job("Fix bug", 0)
         );
         assertThat(result, is(3));
     }
@@ -105,8 +102,8 @@ public class JobTest {
     public void whenComparatorDescByPriorityAndAscName() {
         Comparator<Job> compDescPriorityAscName = new JobDescByPriority().thenComparing(new JobAscByName());
         int result = compDescPriorityAscName.compare(
-                new Job("Impl task", PRIORITY),
-                new Job("Fix bug", PRIORITY)
+                new Job("Impl task", 0),
+                new Job("Fix bug", 0)
         );
         assertThat(result, is(3));
     }
@@ -115,8 +112,8 @@ public class JobTest {
     public void whenComparatorDescByPriorityAndDescName() {
         Comparator<Job> compDescPriorityDescName = new JobDescByPriority().thenComparing(new JobDescByName());
         int result = compDescPriorityDescName.compare(
-                new Job("Impl task", PRIORITY),
-                new Job("Fix bug", PRIORITY)
+                new Job("Impl task", 0),
+                new Job("Fix bug", 0)
         );
         assertThat(result, is(-3));
     }
@@ -125,8 +122,8 @@ public class JobTest {
     public void whenComparatorAskByPriorityAndDescName() {
         Comparator<Job> compAscPriorityDescName = new JobAscByPriority().thenComparing(new JobDescByName());
         int result = compAscPriorityDescName.compare(
-                new Job("Impl task", PRIORITY),
-                new Job("Fix bug", PRIORITY)
+                new Job("Impl task", 0),
+                new Job("Fix bug", 0)
         );
         assertThat(result, is(-3));
     }
