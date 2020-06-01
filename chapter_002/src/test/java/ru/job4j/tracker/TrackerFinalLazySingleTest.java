@@ -18,7 +18,7 @@ public class TrackerFinalLazySingleTest {
 
     @Test
     public void whenSingletonThenReturnTheSameObject() {
-        TrackerFinalLazySingle tracker= TrackerFinalLazySingle.getInstance();
+        TrackerFinalLazySingle tracker = TrackerFinalLazySingle.getInstance();
         assertThat(tracker, is(this.tracker));
     }
 }
